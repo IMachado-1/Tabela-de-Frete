@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki: Guia de Entidades e Uso - Sistema de Gestão de Tabelas de Frete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #0056b3;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        .highlight {
+            background-color: #e9f5ff;
+            padding: 10px;
+            border-left: 5px solid #007bff;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .example {
+            font-style: italic;
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: background-color 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wiki: Guia de Entidades e Uso - Sistema de Gestão de Tabelas de Frete</h1>
+
+        <div class="highlight">
+            <h2>Objetivo desta Prototipação (UX)</h2>
+            <p>Este protótipo tem como foco principal a **usabilidade** e a **fluidez do fluxo sistêmico** de gestão de tabelas de frete. Nosso objetivo é simular as interações e a sequência de passos que você realizará no sistema para garantir que o processo seja lógico e fácil de usar. Por isso, neste momento, não nos aprofundamos nos detalhes de interface visual (cores, fontes, ícones), mas sim na sua experiência com as funcionalidades e a navegação.</p>
+        </div>
+
+        <p>Este guia tem como objetivo ajudá-lo a entender as principais entidades do nosso sistema de Tabelas de Frete e como interagir com elas para gerenciar a precificação de seus fretes.</p>
+
+        ---
+
+        <h2>O que é um Agrupador de Produtos/Materiais?</h2>
+        <p>Um <strong>Agrupador de Produtos/Materiais</strong> é uma categoria que reúne produtos ou materiais que possuem as <strong>mesmas características de medida</strong> (por exemplo, todos em litros, ou todos em quilos) e que geralmente seguem o <strong>mesmo padrão de custo por quilômetro (R$/km)</strong> no transporte.</p>
+        <p><strong>Por que usamos Agrupadores?</strong><br>Ele simplifica a gestão da tabela de frete, pois permite que você defina um limite de frete para um grupo de itens de uma só vez, em vez de um por um. Isso é super útil para equipes que trabalham com categorias específicas de produtos.</p>
+
+        ---
+
+        <h2>O que é uma Rota?</h2>
+        <p>Uma <strong>Rota</strong> é a forma de precificação de frete utilizada para o <strong>fluxo logístico Outbound</strong> (geralmente para o envio de produtos acabados ou mercadorias da sua empresa para clientes).</p>
+        <p>Ela é definida por:</p>
+        <ul>
+            <li><strong>Origem:</strong> A cidade de onde o frete parte (geralmente um depósito seu).</li>
+            <li><strong>Destino:</strong> A cidade onde o frete será entregue (o local do cliente ou outro ponto de entrega).</li>
+            <li><strong>Agrupador de Produtos/Materiais:</strong> Indica quais produtos ou materiais (que fazem parte daquele agrupador) são cobertos por essa rota e seu limite de frete.</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemplo:</strong> Uma Rota para "Etanol" de "Sinop-MT" para "Rio de Janeiro-RJ" terá um limite de frete específico para o transporte de Etanol entre essas duas cidades.</p>
+        </div>
+
+        ---
+
+        <h2>O que é um Range?</h2>
+        <p>Um <strong>Range</strong> é a forma de precificação de frete utilizada para o <strong>fluxo logístico Inbound</strong> (geralmente para o recebimento de matérias-primas ou insumos na sua empresa).</p>
+        <p>Ele é definido por:</p>
+        <ul>
+            <li><strong>Origem:</strong> A cidade de onde o material parte (geralmente uma usina ou fornecedor).</li>
+            <li><strong>Range (KM):</strong> Um limite de quilometragem percorrida para o frete. O valor do frete muda conforme a distância se encaixa em diferentes ranges.</li>
+            <li><strong>Agrupador de Produtos/Materiais:</strong> Indica quais materiais (que fazem parte daquele agrupador) são cobertos por esse range e seu limite de frete.</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemplo:</strong> Um Range para "Milho" com Origem "Sinop-MT" para um limite de "150 KM" terá um valor de frete para transportes de Milho que percorram até 150 KM a partir de Sinop. Outro Range de 300 KM terá um valor diferente.</p>
+        </div>
+
+        ---
+
+        <h2>O que é uma Tabela de Frete e como Criar?</h2>
+        <p>A <strong>Tabela de Frete</strong> é o principal container no sistema, que organiza e armazena suas <strong>Rotas</strong> ou <strong>Ranges</strong>. Ela tem um período de <strong>vigência</strong> (início e fim) e um <strong>status</strong> que indica se os itens estão aprovados ou pendentes de validação.</p>
+
+        <h3>Como Criar uma Nova Tabela de Frete:</h3>
+        <ol>
+            <li>Na seção "Tabelas de Frete Cadastradas", observe as colunas "Tipo Tabela" e "Agrupadores para Nova Tabela", ao lado do botão "Nova Tabela".</li>
+            <li><strong>Selecione o "Tipo Tabela"</strong> (Rota para Outbound, Range para Inbound) no combobox.</li>
+            <li><strong>Selecione os Agrupadores:</strong>
+                <ul>
+                    <li>Clique no campo <strong>"Agrupadores para Nova Tabela"</strong>. Um pequeno container com uma lista de seleção múltipla será aberto.</li>
+                    <li><strong>Marque os Agrupadores de Produtos/Materiais</strong> que essa nova tabela poderá conter. Você pode selecionar mais de um.</li>
+                    <li>Após selecionar, clique no botão <strong>"Aplicar"</strong> dentro desse container para confirmar sua escolha. O campo "Agrupadores para Nova Tabela" mostrará a quantidade de agrupadores selecionados.</li>
+                </ul>
+            </li>
+            <li>Clique no botão <strong>"Nova Tabela"</strong>.</li>
+            <li>O sistema criará uma nova tabela com um ID único, o tipo de fluxo selecionado, os agrupadores permitidos e o status inicial "Possui Validações Pendentes". Ela será automaticamente selecionada no grid superior e seus detalhes aparecerão no grid inferior para que você comece a adicionar Rotas ou Ranges.</li>
+        </ol>
+
+        ---
+
+        <h2>Como Criar uma Nova Rota ou Range?</h2>
+        <p>Após criar e selecionar uma Tabela de Frete, você poderá adicionar Rotas ou Ranges a ela, dependendo do tipo da tabela (Rota para Outbound, Range para Inbound).</p>
+        <ol>
+            <li>Certifique-se de que a <strong>Tabela de Frete desejada está selecionada</strong> no grid superior da seção "Tabelas de Frete Cadastradas" (a linha ficará azul e com borda).</li>
+            <li>No container "Detalhes da Tabela", clique no botão <strong>"Nova Rota/Range"</strong>.</li>
+            <li>Uma nova linha editável aparecerá no grid de detalhes. Preencha os campos:
+                <ul>
+                    <li><strong>Agrupador:</strong> Selecione o Agrupador de Produto/Material (apenas os que você selecionou na criação da tabela estarão disponíveis aqui).</li>
+                    <li><strong>Origem:</strong> Digite ou selecione a cidade de origem.</li>
+                    <li><strong>Destino / Range Km:</strong>
+                        <ul>
+                            <li>Se for uma tabela de <strong>Rota</strong>, digite a cidade de destino.</li>
+                            <li>Se for uma tabela de <strong>Range</strong>, digite o valor do quilômetro limite (ex: 150 para 150 KM).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Limite Frete:</strong> Digite o valor máximo de frete para essa rota/range.</li>
+                </ul>
+            </li>
+            <li>Após preencher os dados, clique em <strong>"Salvar Detalhes"</strong> para registrar o novo item na tabela. O status do item será "Pendente".</li>
+        </ol>
+        <div class="highlight">
+            <p><strong>Importante:</strong> Ao adicionar uma nova Rota ou Range, a Tabela de Frete pode voltar ao status "Possui Validações Pendentes", indicando que há itens novos ou alterados aguardando aprovação.</p>
+        </div>
+
+        ---
+
+        <h2>Restrições de Acesso na Usabilidade</h2>
+        <p>O sistema foi projetado com regras de segurança e governança para proteger a integridade dos dados e garantir a conformidade dos processos. Esteja ciente das seguintes restrições:</p>
+        <ul>
+            <li><strong>Tabelas em Uso:</strong>
+                <ul>
+                    <li>Se uma <strong>Tabela de Frete já foi utilizada</strong> em algum processo (como uma "Definição de Frete"), você <strong>NÃO poderá alterá-la nem excluí-la</strong>.</li>
+                    <li>A <strong>vigência de uma tabela</strong> que já tenha Rotas/Ranges validados e/ou tenha sido utilizada em algum processo <strong>não poderá ser alterada</strong> por usuários comuns. Apenas usuários com permissão de "validar tabela de frete" e sob condições específicas poderão fazê-lo.</li>
+                </ul>
+            </li>
+            <li><strong>Rotas/Ranges Validados:</strong>
+                <ul>
+                    <li>Após uma Rota ou um Range ter seu status como <strong>"Aprovado" ou "Reprovado"</strong>, você <strong>NÃO poderá alterá-lo nem excluí-lo</strong> se não tiver a permissão de "validar tabela de frete". Apenas usuários validadores possuem essa capacidade.</li>
+                    <li>Mesmo que você não possa alterar um item validado, você <strong>sempre poderá adicionar novas Rotas ou Ranges</strong> à sua tabela, desde que ela não esteja em uso.</li>
+                </ul>
+            </li>
+            <li><strong>Duplicidade:</strong>
+                <ul>
+                    <li>O sistema <strong>não permitirá o registro de Rotas ou Ranges duplicados</strong> dentro da mesma tabela. Ele verificará se já existe um item (pendente ou validado) com o mesmo Agrupador, Origem e Destino (para Rotas) ou Agrupador, Origem e Range Km (para Ranges).</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Essas restrições são essenciais para manter a integridade dos seus dados de frete e garantir que todas as negociações sigam as diretrizes aprovadas.</p>
+
+        <a href="index.html" class="back-button">Voltar para o Sistema</a>
+    </div>
+</body>
+</html>

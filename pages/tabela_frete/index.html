@@ -19,6 +19,30 @@
             padding: 1rem 0;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative; /* Adicionado para posicionar o botão de ajuda */
+        }
+
+        header h1 {
+            margin-bottom: 0; /* Remove margem inferior padrão para ajustar o botão */
+        }
+
+        .help-button {
+            position: absolute;
+            top: 15px; /* Ajuste conforme necessário */
+            right: 20px; /* Ajuste conforme necessário */
+            padding: 8px 15px;
+            background-color: #28a745; /* Cor de botão de ajuda */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none; /* Remover sublinhado padrão do link */
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .help-button:hover {
+            background-color: #218838;
         }
 
         main {
@@ -332,7 +356,8 @@
 </head>
 <body>
     <header>
-        <h1>Projeto Tabela de Frete - Prototipação Interface de Usuário - Validação_v1 </h1>
+        <h1>Tabela de Frete - Prototipação Interface de Usuário - Validação_v1 </h1>
+        <a href="wiki.html" class="help-button">Ajuda / Wiki</a> 
     </header>
     <main>
         <section id="busca-tabelas">
